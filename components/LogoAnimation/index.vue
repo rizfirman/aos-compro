@@ -7,7 +7,13 @@
 
     <!-- Layar Interaktif Setelah Loading -->
     <div v-if="interactionRequired && !loading" class="interaction-overlay">
-      <p class="interaction-text">Move the cursor to open the page...</p>
+      <div>
+        <p class="interaction-text">TAP SCREEN</p>
+        <Icon
+          name="material-symbols:touch-app-outline"
+          class="interaction-icon"
+        />
+      </div>
     </div>
 
     <!-- Spline Viewer -->
@@ -123,6 +129,23 @@ onMounted(() => {
 
 @keyframes blink {
   50% {
+    opacity: 0.5;
+  }
+}
+
+.interaction-icon {
+  font-size: 50px;
+  margin-top: 10px;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
     opacity: 0.5;
   }
 }

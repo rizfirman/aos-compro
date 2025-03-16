@@ -13,8 +13,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-        Gilroy: ["Gilroy", "sans-serif"],
+        monsterrat: ["Montserrat", "sans-serif"],
       },
     },
   },
