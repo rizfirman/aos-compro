@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center mt-5 xl:mt-0 xl:min-h-screen">
     <div
       ref="videoContainer"
-      class="w-[90vw] max-w-4xl h-[50vh] bg-gray-200 flex justify-center items-center rounded-lg shadow-lg"
+      class="w-[90vw] max-w-4xl h-[50vh] bg-black flex justify-center items-center rounded-lg shadow-lg"
     >
       <video
         ref="videoElement"
