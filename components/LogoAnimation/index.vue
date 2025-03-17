@@ -22,7 +22,7 @@
       ref="splineViewer"
       url="https://prod.spline.design/4sjtweJtjCY2CpmN/scene.splinecode"
       events-target="global"
-      @is-loaded="onSplineLoaded"
+      @load-complete="onSplineLoaded"
     />
   </div>
 </template>
@@ -55,8 +55,8 @@ onMounted(() => {
 
   // Simulasi loading sebelum Spline muncul
   setTimeout(() => {
-    loading.value = false; // Selesai loading setelah 3 detik
-    removeLogo(); // Hapus logo setelah loading selesai
+    // loading.value = false; // Selesai loading setelah 3 detik
+    // removeLogo(); // Hapus logo setelah loading selesai
   }, 3000);
 });
 
@@ -76,6 +76,8 @@ onMounted(() => {
 
 const onSplineLoaded = () => {
   console.log("✨ Spline telah di-render!");
+  loading.value = false; // Selesai loading setelah 3 detik
+  removeLogo(); // Hapus logo setelah loading selesai
 };
 </script>
 
