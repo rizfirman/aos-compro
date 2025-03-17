@@ -3,10 +3,7 @@
     <LogoAnimation />
     <div v-for="data in dataList" :key="data.id">
       <ImageCard v-if="data.type === 'image'" v-intersect :img="data.link" />
-      <YouTubePlayer
-        v-else-if="data.type === 'video'"
-        :video-id="data.videoId"
-      />
+      <YouTubePlayer v-else-if="data.type === 'video'" :video-src="data.link" />
     </div>
   </div>
 </template>

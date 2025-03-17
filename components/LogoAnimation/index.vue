@@ -15,13 +15,14 @@
         />
       </div>
     </div>
+    <div v-if="!interactionRequired" />
 
     <!-- Spline Viewer -->
     <spline-viewer
-      v-show="!interactionRequired"
       ref="splineViewer"
       url="https://prod.spline.design/4sjtweJtjCY2CpmN/scene.splinecode"
       events-target="global"
+      @is-loaded="onSplineLoaded"
     />
   </div>
 </template>
@@ -67,9 +68,15 @@ const handleUserInteraction = () => {
 
 // Tambahkan event listener untuk mendeteksi gerakan user di scene
 onMounted(() => {
-  document.addEventListener("mousemove", handleUserInteraction, { once: true });
-  document.addEventListener("touchmove", handleUserInteraction, { once: true });
+  //   document.addEventListener("mousemove", handleUserInteraction, { once: true });
+  //   document.addEventListener("touchmove", handleUserInteraction, { once: true });
+  //click event
+  document.addEventListener("click", handleUserInteraction, { once: true });
 });
+
+const onSplineLoaded = () => {
+  console.log("✨ Spline telah di-render!");
+};
 </script>
 
 <style scoped>

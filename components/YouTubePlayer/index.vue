@@ -1,16 +1,16 @@
 <template>
-  <div class="flex justify-center items-center xl:min-h-screen">
+  <div class="flex justify-center items-center mt-5 xl:mt-0 xl:min-h-screen">
     <div
       ref="videoContainer"
       class="w-[90vw] max-w-4xl h-[50vh] bg-gray-200 flex justify-center items-center rounded-lg shadow-lg"
     >
-      <iframe
-        v-if="isPlaying"
-        :src="embedUrl"
+      <video
+        ref="videoElement"
         class="w-full h-full rounded-lg"
-        frameborder="0"
-        allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        :src="props.videoSrc"
+        playsinline
+        muted
+        loop
       />
     </div>
   </div>
@@ -18,30 +18,25 @@
 
 <script setup lang="ts">
 const props = defineProps({
-  videoId: {
+  videoSrc: {
     type: String,
     required: true,
   },
 });
 
 const videoContainer = ref<HTMLElement | null>(null);
-const isPlaying = ref(false);
+const videoElement = ref<HTMLVideoElement | null>(null);
 const observer = ref<IntersectionObserver | null>(null);
 
-// Perbarui URL saat video masuk viewport
-const embedUrl = computed(() =>
-  isPlaying.value
-    ? `https://www.youtube.com/embed/${props.videoId}?&autoplay=1&mute=1&enablejsapi=1&playsinline=1`
-    : "",
-);
-
 onMounted(() => {
-  if (!videoContainer.value) return;
+  if (!videoContainer.value || !videoElement.value) return;
 
   observer.value = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
-        isPlaying.value = true;
+        videoElement.value?.play();
+      } else {
+        videoElement.value?.pause();
       }
     },
     { threshold: 0.5 },
@@ -56,5 +51,5 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Tambahan styling untuk animasi masuk */
+/* Tambahan styling jika diperlukan */
 </style>
