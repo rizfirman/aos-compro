@@ -9,9 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { dataList } from "~/constanta/dataList";
-
-// Intersection Observer Directive untuk animasi lazy load gambar
+  import { dataList } from '~/constanta/dataList'
 </script>
 
 <style scoped></style>
