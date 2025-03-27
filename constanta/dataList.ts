@@ -6,8 +6,8 @@ export const dataList = [
   },
   {
     id: 2,
-    link: 'images/what_we_do.png',
-    type: 'image',
+    link: 'videos/what_we_do.mp4',
+    type: 'video',
   },
   {
     id: 3,

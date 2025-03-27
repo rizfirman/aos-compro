@@ -11,6 +11,7 @@
       <YouTubePlayer
         v-else-if="data.type === 'video'"
         :video-src="data.link"
+        :is-loading="loadingVideoProfile"
         @loadeddata="onVideoLoadedData"
         @canplaythrough="onVideoCanPlayThrough"
       />

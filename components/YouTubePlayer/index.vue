@@ -4,6 +4,17 @@
       ref="videoContainer"
       class="flex items-center justify-center rounded-lg bg-black shadow-lg xl:h-[90vh] xl:w-[80vw]"
     >
+      <!-- Loading Spinner -->
+      <div
+        v-if="isLoading"
+        class="absolute z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          class="h-16 w-16 animate-spin rounded-full border-4 border-t-4 border-gray-200"
+        />
+      </div>
+
+      <!-- Video Element -->
       <video
         ref="videoElement"
         class="h-full w-full rounded-lg xl:object-cover"
@@ -23,6 +34,10 @@
     videoSrc: {
       type: String,
       required: true,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   })
   const emit = defineEmits(['loadeddata', 'canplaythrough'])
@@ -54,5 +69,17 @@
 </script>
 
 <style scoped>
-  /* Tambahan styling jika diperlukan */
+  /* Spinner Styles */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>

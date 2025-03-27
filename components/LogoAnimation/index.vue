@@ -6,10 +6,7 @@
     </div>
 
     <!-- Layar Interaktif Setelah Loading -->
-    <div
-      v-if="interactionRequired && !loading && !loadingVideoProfile"
-      class="interaction-overlay"
-    >
+    <div v-if="interactionRequired && !loading" class="interaction-overlay">
       <div>
         <p class="interaction-text">TAP SCREEN</p>
         <Icon
@@ -36,10 +33,6 @@
 
   defineProps({
     loading: {
-      type: Boolean,
-      default: true,
-    },
-    loadingVideoProfile: {
       type: Boolean,
       default: true,
     },
