@@ -11,6 +11,8 @@
         playsinline
         muted
         loop
+        @loadeddata="emit('loadeddata')"
+        @canplaythrough="emit('canplaythrough')"
       />
     </div>
   </div>
@@ -23,6 +25,7 @@
       required: true,
     },
   })
+  const emit = defineEmits(['loadeddata', 'canplaythrough'])
 
   const videoContainer = ref<HTMLElement | null>(null)
   const videoElement = ref<HTMLVideoElement | null>(null)
