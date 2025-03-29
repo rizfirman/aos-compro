@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
   ],
+  image: {
+    // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)
+
+    domains: ['res.cloudinary.com'],
+  },
   plugins: ['~/plugins/spline-viewer.client.ts'],
   ssr: false,
   app: {

@@ -12,7 +12,6 @@
     <!-- Nuxt Image dengan Lazy Load & Tidak Terpotong -->
     <nuxt-img
       :src="img"
-      :format="format"
       class="h-full w-full object-contain transition-opacity duration-500"
       :class="{ 'opacity-0': loading, 'opacity-100': !loading }"
       loading="lazy"
