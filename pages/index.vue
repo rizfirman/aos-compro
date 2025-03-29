@@ -7,7 +7,8 @@
       @load-complete="onSplineLoaded"
     />
     <div v-for="data in dataList" :key="data.id">
-      <ImageCard v-if="data.type === 'image'" v-intersect :img="data.link" />
+      <ImageCard v-if="data.type === 'png'" v-intersect :img="data.link" />
+      <GifLoader v-if="data.type === 'gif'" :src="data.link" />
       <YouTubePlayer
         v-else-if="data.type === 'video'"
         :video-src="data.link"

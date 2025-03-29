@@ -2,42 +2,41 @@ export const dataList = [
   {
     id: 1,
     link: 'images/about_us.png',
-    type: 'image',
+    type: 'png',
   },
   {
     id: 2,
-    link: 'videos/what_we_do.mp4',
-    type: 'video',
+    link: 'gifs/what_we_do.gif',
+    type: 'gif',
   },
   {
     id: 3,
     link: 'images/porto_1.png',
-    type: 'image',
+    type: 'png',
   },
   {
     id: 4,
     link: 'images/porto_2.png',
-    type: 'image',
+    type: 'png',
   },
   {
     id: 5,
     link: 'images/porto_3.png',
-    type: 'image',
+    type: 'png',
   },
   {
     id: 6,
     link: 'images/porto_4.png',
-    type: 'image',
+    type: 'png',
   },
   {
     id: 7,
     link: 'videos/showreel_aos.mp4',
     type: 'video',
-    videoId: 'we5ApSDS_Bw?si=Nu58f4dILvSnAaHy',
   },
   {
     id: 8,
     link: 'images/thank_you.png',
-    type: 'image',
+    type: 'png',
   },
 ]
