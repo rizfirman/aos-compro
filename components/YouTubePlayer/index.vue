@@ -17,7 +17,7 @@
       <!-- Video Element -->
       <video
         ref="videoElement"
-        class="h-full w-full rounded-lg xl:object-cover"
+        class="h-full w-full rounded-lg"
         :src="props.videoSrc"
         playsinline
         muted
