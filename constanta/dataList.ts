@@ -1,7 +1,7 @@
 export const dataList = [
   {
     id: 1,
-    link: 'images/about_us-min.png',
+    link: 'images/about_us-min.webp',
     type: 'png',
   },
   {
@@ -11,22 +11,22 @@ export const dataList = [
   },
   {
     id: 3,
-    link: 'images/porto_1-min.png',
+    link: 'images/porto_1-min.webp',
     type: 'png',
   },
   {
     id: 4,
-    link: 'images/porto_2-min.png',
+    link: 'images/porto_2-min.webp',
     type: 'png',
   },
   {
     id: 5,
-    link: 'images/porto_3-min.png',
+    link: 'images/porto_3-min.webp',
     type: 'png',
   },
   {
     id: 6,
-    link: 'images/porto_4-min.png',
+    link: 'images/porto_4-min.webp',
     type: 'png',
   },
   {
@@ -36,7 +36,7 @@ export const dataList = [
   },
   {
     id: 8,
-    link: 'images/thank_you-min.png',
+    link: 'images/thank_you-min.webp',
     type: 'png',
   },
 ]
