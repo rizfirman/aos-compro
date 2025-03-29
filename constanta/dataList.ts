@@ -1,8 +1,8 @@
 export const dataList = [
   {
     id: 1,
-    link: 'images/about_us-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265378/about_us-min_exoouk.webp',
+    type: 'image',
   },
   {
     id: 2,
@@ -11,23 +11,23 @@ export const dataList = [
   },
   {
     id: 3,
-    link: 'images/porto_1-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265543/porto_1-min_ht0gqv.webp',
+    type: 'image',
   },
   {
     id: 4,
-    link: 'images/porto_2-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265497/porto_2-min_uza5vk.webp',
+    type: 'image',
   },
   {
     id: 5,
-    link: 'images/porto_3-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265414/porto_3-min_tlbti3.webp',
+    type: 'image',
   },
   {
     id: 6,
-    link: 'images/porto_4-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265390/porto_4-min_ovgow6.webp',
+    type: 'image',
   },
   {
     id: 7,
@@ -36,7 +36,7 @@ export const dataList = [
   },
   {
     id: 8,
-    link: 'images/thank_you-min.webp',
-    type: 'png',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265384/thank_you-min_dfemqt.webp',
+    type: 'image',
   },
 ]
