@@ -6,8 +6,8 @@ export const dataList = [
   },
   {
     id: 2,
-    link: 'videos/what_we_do.mp4',
-    type: 'video',
+    link: 'gifs/what_we_do.gif',
+    type: 'gif',
   },
   {
     id: 3,
