@@ -1,7 +1,6 @@
 <template>
   <div class="mt-5 flex items-center justify-center xl:mt-0 xl:min-h-screen">
     <div
-      ref="videoContainer"
       class="flex items-center justify-center rounded-lg bg-black shadow-lg xl:h-[90vh] xl:w-[80vw]"
     >
       <!-- Loading Spinner -->
