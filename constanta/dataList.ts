@@ -6,8 +6,8 @@ export const dataList = [
   },
   {
     id: 2,
-    link: 'gifs/what_we_do.gif',
-    type: 'gif',
+    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743772812/WHAT_WE_DO_BAR_mwyvkv.png',
+    type: 'image',
   },
   {
     id: 3,
