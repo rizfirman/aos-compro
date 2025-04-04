@@ -4,13 +4,19 @@
       ref="videoContainer"
       class="flex items-center justify-center rounded-lg bg-black shadow-lg xl:h-[90vh] xl:w-[80vw]"
     >
-      <video
+      <!-- <video
         ref="videoElement"
         class="h-full w-full rounded-lg xl:object-cover"
         :src="props.videoSrc"
         playsinline
         muted
         loop
+      /> -->
+      <video
+        ref="videoElement"
+        class="h-full w-full rounded-lg xl:object-cover"
+        :src="props.videoSrc"
+        controls
       />
     </div>
   </div>
@@ -24,30 +30,30 @@
     },
   })
 
-  const videoContainer = ref<HTMLElement | null>(null)
-  const videoElement = ref<HTMLVideoElement | null>(null)
-  const observer = ref<IntersectionObserver | null>(null)
+  // const videoContainer = ref<HTMLElement | null>(null)
+  // const videoElement = ref<HTMLVideoElement | null>(null)
+  // const observer = ref<IntersectionObserver | null>(null)
 
-  onMounted(() => {
-    if (!videoContainer.value || !videoElement.value) return
+  // onMounted(() => {
+  //   if (!videoContainer.value || !videoElement.value) return
 
-    observer.value = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          videoElement.value?.play()
-        } else {
-          videoElement.value?.pause()
-        }
-      },
-      { threshold: 0.5 },
-    )
+  //   observer.value = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         videoElement.value?.play()
+  //       } else {
+  //         videoElement.value?.pause()
+  //       }
+  //     },
+  //     { threshold: 0.5 },
+  //   )
 
-    observer.value.observe(videoContainer.value)
-  })
+  //   observer.value.observe(videoContainer.value)
+  // })
 
-  onUnmounted(() => {
-    observer.value?.disconnect()
-  })
+  // onUnmounted(() => {
+  //   observer.value?.disconnect()
+  // })
 </script>
 
 <style scoped>
