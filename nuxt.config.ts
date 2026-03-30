@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
+    '@vueuse/nuxt',
   ],
   image: {
     // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)

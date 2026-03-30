@@ -1,11 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* ================= BASE ================= */
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 92%;
 
-html, body {
-    background-color: black;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 92%;
+
+    --primary: 200 100% 50%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 280 80% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 200 100% 50%;
+
+    --radius: 0.25rem;
+
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
 }
 
-spline-viewer #logo {
-    display: none !important;
+/* ================= COMPONENTS ================= */
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--foreground)),
+      hsl(var(--muted-foreground))
+    );
   }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+  }
+
+  .glow-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.5),
+      transparent
+    );
+  }
+
+  .nav-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--background) / 0.6);
+  }
+
+  .section-fade {
+    @apply translate-y-8 opacity-0;
+  }
+
+  .section-fade.visible {
+    @apply translate-y-0 opacity-100 transition-all duration-700 ease-out;
+  }
+}
+
+/* ================= UTILITIES ================= */
+@layer utilities {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ================= GLOBAL ================= */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}

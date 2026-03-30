@@ -1,42 +1,162 @@
-export const dataList = [
+import domainScreen from '@/assets/domain-screen.jpg'
+import domainStage from '@/assets/domain-stage.jpg'
+import domainSpace from '@/assets/domain-space.jpg'
+
+import projectScreen01 from '@/assets/project-screen-01.jpg'
+import projectScreen02 from '@/assets/project-screen-02.jpg'
+import projectScreen03 from '@/assets/project-screen-03.jpg'
+import projectBrandFilm from '@/assets/project-brand-film.jpg'
+import projectMotion from '@/assets/project-motion.jpg'
+
+import projectStage01 from '@/assets/project-stage-01.jpg'
+import projectStage02 from '@/assets/project-stage-02.jpg'
+import projectStage03 from '@/assets/project-stage-03.jpg'
+import projectStage from '@/assets/project-stage.jpg'
+import projectCorporateStage from '@/assets/project-corporate-stage.jpg'
+
+import projectSpace01 from '@/assets/project-space-01.jpg'
+import projectSpace02 from '@/assets/project-space-02.jpg'
+import projectSpace03 from '@/assets/project-space-03.jpg'
+import projectMapping from '@/assets/project-mapping.jpg'
+import projectImmersive from '@/assets/project-immersive.jpg'
+
+export interface Domain {
+  slug: string
+  title: string
+  label: string
+  image: string
+  description: string
+  longDescription: string
+  capabilities: string[]
+  projects: { title: string; client: string; image: string }[]
+  playlistUrl: string
+}
+
+export const domains: Domain[] = [
   {
-    id: 1,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265378/about_us-min_exoouk.webp',
-    type: 'image',
+    slug: 'screen',
+    title: 'Visual for Screen',
+    label: 'Screen',
+    image: domainScreen,
+    description:
+      'Cinematic content, brand films, motion graphics, and digital campaigns built to captivate on every screen.',
+    longDescription:
+      'We create visual content engineered for screen-based delivery — from broadcast commercials to digital campaigns, brand films to social content systems. Every frame is crafted with cinematic precision, ensuring your visual identity translates with impact across all screen formats.',
+    capabilities: [
+      'Motion Design',
+      'Commercial Visuals',
+      'Brand Content',
+      'Digital Visual Campaigns',
+      'Visual Storytelling',
+      '2D & 3D Animation',
+    ],
+    projects: [
+      { title: 'Kinetic Flow', client: 'Maison Lumière', image: projectMotion },
+      {
+        title: 'Noir Essence',
+        client: 'Atelier Noir',
+        image: projectBrandFilm,
+      },
+      { title: 'Neon Pulse', client: 'Vertex Labs', image: projectScreen01 },
+      {
+        title: 'Studio Light',
+        client: 'Nova Creative',
+        image: projectScreen02,
+      },
+      { title: 'Liquid Form', client: 'Alchemy Co.', image: projectScreen03 },
+      { title: 'Chromatic', client: 'Prisma Agency', image: projectMotion },
+      {
+        title: 'Signal Wave',
+        client: 'Broadcast Inc.',
+        image: projectScreen01,
+      },
+      {
+        title: 'Frame Perfect',
+        client: 'Cinéma House',
+        image: projectBrandFilm,
+      },
+      { title: 'Digital Canvas', client: 'Art+Code', image: projectScreen03 },
+      { title: 'Motion Shift', client: 'Drift Studio', image: projectScreen02 },
+    ],
+    playlistUrl: 'https://youtube.com/playlist?list=YOUR_SCREEN_PLAYLIST',
   },
   {
-    id: 2,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743772812/WHAT_WE_DO_BAR_mwyvkv.png',
-    type: 'image',
+    slug: 'stage',
+    title: 'Visual for Stage',
+    label: 'Stage',
+    image: domainStage,
+    description:
+      'Real-time visual systems for live performances, concerts, award shows, and large-scale events.',
+    longDescription:
+      'We design and deliver visual systems for live stages — from arena concerts to award ceremonies, corporate keynotes to festival main stages. Our approach combines creative direction with technical execution, building visual narratives that synchronize with performance in real time.',
+    capabilities: [
+      'Stage Visual Systems',
+      'Concert Visual Content',
+      'LED Screen Visual Design',
+      'Live Visual Performance',
+      'Event Visual Direction',
+    ],
+    projects: [
+      { title: 'Ethereal Waves', client: 'Meridian Live', image: projectStage },
+      { title: 'Arena Pulse', client: 'Live Nation ME', image: projectStage01 },
+      {
+        title: 'Corporate Edge',
+        client: 'GlobalTech Summit',
+        image: projectStage02,
+      },
+      { title: 'Festival Blaze', client: 'Soundstorm', image: projectStage03 },
+      {
+        title: 'Convergence',
+        client: 'Dubai Expo',
+        image: projectCorporateStage,
+      },
+      { title: 'Night Voltage', client: 'MDL Beast', image: projectStage01 },
+      { title: 'Lumina Live', client: 'Heritage Arts', image: projectStage },
+      { title: 'Stage Shift', client: 'Eventium', image: projectStage02 },
+      { title: 'Sonic Wave', client: 'Ultra ME', image: projectStage03 },
+      {
+        title: 'Grand Visual',
+        client: 'DIFC Events',
+        image: projectCorporateStage,
+      },
+    ],
+    playlistUrl: 'https://youtube.com/playlist?list=YOUR_STAGE_PLAYLIST',
   },
   {
-    id: 3,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265543/porto_1-min_ht0gqv.webp',
-    type: 'image',
-  },
-  {
-    id: 4,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265497/porto_2-min_uza5vk.webp',
-    type: 'image',
-  },
-  {
-    id: 5,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265414/porto_3-min_tlbti3.webp',
-    type: 'image',
-  },
-  {
-    id: 6,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265390/porto_4-min_ovgow6.webp',
-    type: 'image',
-  },
-  {
-    id: 7,
-    link: 'videos/showreel_aos.mp4',
-    type: 'video',
-  },
-  {
-    id: 8,
-    link: 'https://res.cloudinary.com/rizfirman/image/upload/v1743265384/thank_you-min_dfemqt.webp',
-    type: 'image',
+    slug: 'space',
+    title: 'Visual for Space',
+    label: 'Space',
+    image: domainSpace,
+    description:
+      'Immersive installations, projection mapping, and spatial visual experiences for physical environments.',
+    longDescription:
+      'We transform physical environments into visual experiences. Through projection mapping, immersive installations, and spatial design, we create environments where architecture becomes a canvas and space becomes narrative. Each project is site-specific, technically precise, and experientially powerful.',
+    capabilities: [
+      'Video Mapping',
+      'Immersive Installations',
+      'Spatial Visual Systems',
+      'Interactive Visual Environments',
+    ],
+    projects: [
+      {
+        title: 'Echoes of Light',
+        client: 'Heritage Council',
+        image: projectMapping,
+      },
+      {
+        title: 'Deep Dive',
+        client: 'National Gallery',
+        image: projectImmersive,
+      },
+      { title: 'Facade Prism', client: 'Municipality', image: projectSpace01 },
+      { title: 'Fluid Realm', client: 'Art Dubai', image: projectSpace02 },
+      { title: 'Light Path', client: 'Museum District', image: projectSpace03 },
+      { title: 'Projected', client: 'Royal Opera', image: projectSpace01 },
+      { title: 'Immersion', client: 'Expo 2025', image: projectMapping },
+      { title: 'Spatial Echo', client: 'Alserkal Ave', image: projectSpace02 },
+      { title: 'Canvas City', client: 'Sharjah Art', image: projectImmersive },
+      { title: 'Lightform', client: 'Louvre AD', image: projectSpace03 },
+    ],
+    playlistUrl: 'https://youtube.com/playlist?list=YOUR_SPACE_PLAYLIST',
   },
 ]
