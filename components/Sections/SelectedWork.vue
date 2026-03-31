@@ -3,7 +3,7 @@
     <div class="container">
       <!-- HEADER -->
       <div class="mb-16 md:mb-24">
-        <p class="text-primary mb-3 text-[10px] uppercase tracking-[0.4em]">
+        <p class="mb-3 text-[10px] uppercase tracking-[0.4em] text-primary">
           Selected Work
         </p>
 
@@ -27,20 +27,20 @@
             <img
               :src="project.image"
               :alt="project.title"
-              class="h-full w-full object-cover transition duration-[1.4s] group-hover:scale-110"
+              class="duration-[1.4s] h-full w-full object-cover transition group-hover:scale-110"
             />
             <div
-              class="bg-background/40 group-hover:bg-background/15 absolute inset-0 transition duration-700"
+              class="absolute inset-0 bg-background/40 transition duration-700 group-hover:bg-background/15"
             />
           </div>
 
           <div
-            class="from-background via-background/70 absolute bottom-0 left-0 right-0 bg-gradient-to-t to-transparent p-8 md:p-12"
+            class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/70 to-transparent p-8 md:p-12"
           >
             <h3 class="font-display text-3xl md:text-5xl">
               {{ project.title }}
             </h3>
-            <p class="text-muted-foreground mt-1 text-xs">
+            <p class="mt-1 text-xs text-muted-foreground">
               {{ project.client }}
             </p>
           </div>
@@ -63,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useIntersectionObserver } from '@vueuse/core'
   import gsap from 'gsap'
   import { domains } from '@/constanta/dataList'
 
@@ -74,14 +73,6 @@
 
   const allProjects = domains.flatMap((d) => d.projects.slice(0, 2))
   const featured = allProjects.slice(0, 4)
-
-  useIntersectionObserver(
-    el,
-    ([entry]) => {
-      if (entry.isIntersecting) visible.value = true
-    },
-    { threshold: 0.2 },
-  )
 
   watch(visible, (val) => {
     if (!val || !el.value) return

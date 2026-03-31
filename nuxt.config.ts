@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['@/assets/scss/global.scss'],
   modules: [
@@ -11,6 +10,13 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
   ],
+  runtimeConfig: {
+    public: {
+      EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
+      EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
+      EMAIL_PUBLIC_KEY: process.env.EMAIL_PUBLIC_KEY,
+    },
+  },
   image: {
     // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)
 

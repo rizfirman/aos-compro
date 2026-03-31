@@ -6,18 +6,18 @@
     <!-- BG -->
     <div ref="bg" class="absolute inset-0">
       <img :src="heroBg" class="h-full w-full object-cover" />
-      <div class="bg-background/60 absolute inset-0" />
+      <div class="absolute inset-0 bg-background/60" />
     </div>
 
     <!-- GRADIENT -->
     <div
-      class="from-background absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t to-transparent"
+      class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent"
     />
 
     <!-- CONTENT -->
     <div ref="content" class="container relative text-center">
       <p
-        class="text-muted-foreground mb-10 text-[10px] uppercase tracking-[0.5em]"
+        class="mb-10 font-body text-[10px] uppercase tracking-[0.5em] text-muted-foreground md:text-xs"
       >
         Integrated Visual Production Studio
       </p>
@@ -26,21 +26,29 @@
         <AnimatedText
           text="Where Visual"
           as="h1"
-          class="font-display mb-6 whitespace-nowrap text-[clamp(2.5rem,8vw,8rem)] leading-[0.9]"
+          class="font-display text-6xl leading-[0.85] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
           :ready="ready"
         />
       </div>
+
+      <!-- <div class="overflow-hidden">
+        <div
+          class="text-gradient-primary font-display text-6xl leading-[0.85] tracking-wide sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
+        />
+      </div> -->
 
       <div class="overflow-hidden">
         <AnimatedText
           text="Comes Alive"
           as="h1"
-          class="font-display mb-6 whitespace-nowrap text-[clamp(2.5rem,8vw,8rem)] leading-[0.9]"
+          class="font-display text-6xl leading-[0.85] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
           :ready="ready"
         />
       </div>
 
-      <p class="text-muted-foreground mx-auto mt-10 max-w-md text-sm">
+      <p
+        class="mb-10 font-body text-[10px] uppercase tracking-[0.5em] text-muted-foreground md:text-xs"
+      >
         Integrated visual systems for screen, stage, and space.
       </p>
 
@@ -48,7 +56,7 @@
         <MagneticButton>
           <NuxtLink
             to="/works"
-            class="inline-flex items-center gap-3 border px-10 py-5 text-[10px] uppercase"
+            class="inline-flex items-center gap-3 border px-10 py-5 font-display text-[20px] uppercase"
           >
             Explore Works
           </NuxtLink>
@@ -60,7 +68,7 @@
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
       <div
         ref="indicator"
-        class="via-primary h-12 w-[1px] bg-gradient-to-b from-transparent to-transparent"
+        class="h-12 w-[1px] bg-gradient-to-b from-transparent via-primary to-transparent"
       />
     </div>
   </section>

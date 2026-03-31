@@ -11,18 +11,18 @@
         class="h-full w-full object-cover"
       />
       <div
-        class="bg-background/55 group-hover:bg-background/35 absolute inset-0 transition duration-1000"
+        class="absolute inset-0 bg-background/55 transition duration-1000 group-hover:bg-background/35"
       />
     </div>
 
     <div
-      class="from-background via-background/60 absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t to-transparent"
+      class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/60 to-transparent"
     />
 
     <!-- CONTENT -->
     <div class="container relative pb-20 md:pb-28">
       <p
-        class="content-item text-primary mb-4 text-[10px] uppercase tracking-[0.4em]"
+        class="content-item mb-4 text-[10px] uppercase tracking-[0.4em] text-primary"
       >
         {{ String(index + 1).padStart(2, '0') }}
       </p>
@@ -31,12 +31,12 @@
         :text="domain.title"
         as="h3"
         animation="reveal"
-        class="font-display mb-4 text-5xl md:text-7xl lg:text-8xl"
+        class="mb-4 font-display text-5xl md:text-7xl lg:text-8xl"
         :ready="ready"
       />
 
       <p
-        class="content-item text-muted-foreground mb-10 max-w-xl text-sm leading-relaxed md:text-base"
+        class="content-item mb-10 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base"
       >
         {{ domain.description }}
       </p>
@@ -58,11 +58,12 @@
 <script setup lang="ts">
   import gsap from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import type { Domain } from '~/constanta/dataList'
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const props = defineProps<{
-    domain: any
+  defineProps<{
+    domain: Domain
     index: number
     ready: boolean
   }>()
@@ -73,6 +74,7 @@
   onMounted(() => {
     if (!el.value || !img.value) return
 
+    // PARALLAX
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: el.value,
@@ -92,6 +94,29 @@
         y: 100,
         scale: 0.95,
         ease: 'none',
+      },
+    )
+
+    // 🔥 CONTENT REVEAL
+    const content = el.value.querySelectorAll('.content-item')
+
+    gsap.fromTo(
+      content,
+      {
+        opacity: 0,
+        y: 60,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: el.value,
+          start: 'top 70%', // 🔥 mulai saat section masuk
+          toggleActions: 'play none none reverse', // scroll up balik lagi
+        },
       },
     )
   })

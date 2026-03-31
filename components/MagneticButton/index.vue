@@ -11,7 +11,6 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { ref } from 'vue'
   import gsap from 'gsap'
 
   interface Props {
@@ -23,9 +22,13 @@
     type?: 'button' | 'submit'
   }
 
-  const props = withDefaults(defineProps<Props>(), {
+  withDefaults(defineProps<Props>(), {
     className: '',
     as: 'div',
+    href: undefined,
+    target: undefined,
+    rel: undefined,
+    type: 'button',
   })
 
   const el = ref<HTMLElement | null>(null)

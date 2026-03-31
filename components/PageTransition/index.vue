@@ -1,3 +1,10 @@
+<template>
+  <div>
+    <div class="page-curtain fixed inset-0 z-[60] bg-primary" />
+    <slot />
+  </div>
+</template>
+
 <script setup lang="ts">
   import gsap from 'gsap'
 
@@ -6,7 +13,7 @@
   onMounted(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        emit('done') // 🔥 kasih signal selesai
+        emit('done')
       },
     })
 
@@ -18,10 +25,3 @@
     })
   })
 </script>
-
-<template>
-  <div>
-    <div class="page-curtain fixed inset-0 z-[60] bg-primary" />
-    <slot />
-  </div>
-</template>

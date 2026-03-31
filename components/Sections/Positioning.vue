@@ -5,7 +5,7 @@
         text="Structured by Vision."
         as="h2"
         animation="blur"
-        class="font-display mb-2 text-5xl leading-[0.9] md:text-7xl lg:text-8xl"
+        class="mb-2 font-display text-5xl leading-[0.9] md:text-7xl lg:text-8xl"
         :ready="ready"
       />
 
@@ -14,12 +14,12 @@
         as="h2"
         animation="blur"
         :delay="0.3"
-        class="font-display text-muted-foreground mb-10 text-5xl leading-[0.9] md:text-7xl lg:text-8xl"
+        class="mb-10 font-display text-5xl leading-[0.9] text-muted-foreground md:text-7xl lg:text-8xl"
         :ready="ready"
       />
 
       <p
-        class="desc text-muted-foreground max-w-2xl text-base leading-relaxed md:text-lg"
+        class="desc max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
       >
         AOS operates through structured visual domains and integrated production
         workflows — delivering complete visual ecosystems from concept through
@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
   import { useIntersectionObserver } from '@vueuse/core'
   import gsap from 'gsap'
 
