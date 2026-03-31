@@ -31,9 +31,10 @@
 <script setup lang="ts">
   import { useIntersectionObserver } from '@vueuse/core'
   import gsap from 'gsap'
+  import type { Section } from '@/constanta/dataList'
 
   defineProps<{
-    section: any
+    section: Section
     index: number
     ready: boolean
   }>()

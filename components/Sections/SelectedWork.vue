@@ -27,7 +27,7 @@
             <img
               :src="project.image"
               :alt="project.title"
-              class="duration-[1.4s] h-full w-full object-cover transition group-hover:scale-110"
+              class="h-full w-full object-cover transition duration-1000 group-hover:scale-110"
             />
             <div
               class="absolute inset-0 bg-background/40 transition duration-700 group-hover:bg-background/15"

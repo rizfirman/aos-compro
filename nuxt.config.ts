@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['@/assets/scss/global.scss'],
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
   ],
+
   runtimeConfig: {
     public: {
       EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
@@ -17,13 +19,16 @@ export default defineNuxtConfig({
       EMAIL_PUBLIC_KEY: process.env.EMAIL_PUBLIC_KEY,
     },
   },
+
   image: {
     // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)
 
     domains: ['res.cloudinary.com'],
   },
+
   plugins: ['~/plugins/spline-viewer.client.ts'],
   ssr: false,
+
   app: {
     head: {
       link: [
@@ -35,4 +40,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  compatibilityDate: '2026-04-01',
 })
