@@ -1,9 +1,9 @@
 <template>
   <PageTransition @done="pageReady = true">
-    <SectionsHero :ready="pageReady" />
-    <SectionsPositioning :ready="pageReady" />
+    <MainPageHeroSection :ready="pageReady" />
+    <MainPagePositioningSection :ready="pageReady" />
 
-    <SectionsDomain
+    <MainPageDomainSection
       v-for="(domain, i) in domains"
       :key="domain.slug"
       :domain="domain"
@@ -11,16 +11,12 @@
       :ready="pageReady"
     />
 
-    <SectionsSelectedWork :ready="pageReady" />
+    <MainPageSelectedWorkSection :ready="pageReady" />
   </PageTransition>
 </template>
 
 <script setup lang="ts">
   import { domains } from '@/constanta/dataList'
-
-  definePageMeta({
-    layout: 'default',
-  })
 
   const pageReady = ref(false)
 </script>

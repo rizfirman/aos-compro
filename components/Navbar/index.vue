@@ -78,7 +78,6 @@
 </template>
 
 <script setup lang="ts">
-  //   import { ref, onMounted, watch } from 'vue'
   import { useWindowScroll } from '@vueuse/core'
   import { useRoute } from 'vue-router'
   import gsap from 'gsap'

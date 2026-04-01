@@ -20,23 +20,7 @@ import projectSpace03 from '@/assets/project-space-03.jpg'
 import projectMapping from '@/assets/project-mapping.jpg'
 import projectImmersive from '@/assets/project-immersive.jpg'
 
-export interface Domain {
-  slug: string
-  title: string
-  label: string
-  image: string
-  description: string
-  longDescription: string
-  capabilities: string[]
-  projects: { title: string; client: string; image: string }[]
-  playlistUrl: string
-}
-
-export interface Section {
-  label: string
-  title: string
-  content: string
-}
+import type { Domain, Section } from '@/types/global-type'
 
 export const sections: Section[] = [
   {
@@ -61,10 +45,12 @@ export const sections: Section[] = [
 
 export const domains: Domain[] = [
   {
+    id: 1,
     slug: 'screen',
     title: 'Visual for Screen',
     label: 'Screen',
     image: domainScreen,
+    video: '/videos/showreel_aos.mp4',
     description:
       'Cinematic content, brand films, motion graphics, and digital campaigns built to captivate on every screen.',
     longDescription:
@@ -108,10 +94,12 @@ export const domains: Domain[] = [
     playlistUrl: 'https://youtube.com/playlist?list=YOUR_SCREEN_PLAYLIST',
   },
   {
+    id: 2,
     slug: 'stage',
     title: 'Visual for Stage',
     label: 'Stage',
     image: domainStage,
+    video: '/video.mp4',
     description:
       'Real-time visual systems for live performances, concerts, award shows, and large-scale events.',
     longDescription:
@@ -150,6 +138,7 @@ export const domains: Domain[] = [
     playlistUrl: 'https://youtube.com/playlist?list=YOUR_STAGE_PLAYLIST',
   },
   {
+    id: 3,
     slug: 'space',
     title: 'Visual for Space',
     label: 'Space',

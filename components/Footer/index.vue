@@ -98,7 +98,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watchEffect } from 'vue'
   import { useIntersectionObserver } from '@vueuse/core'
   import gsap from 'gsap'
 
