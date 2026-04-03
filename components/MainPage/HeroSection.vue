@@ -15,7 +15,7 @@
     />
 
     <!-- CONTENT -->
-    <div ref="content" class="container relative text-center">
+    <div ref="content" class="container relative translate-y-2 text-center">
       <p
         class="mb-10 font-body text-[10px] uppercase tracking-[0.5em] text-muted-foreground md:text-xs"
       >
@@ -26,7 +26,7 @@
         <AnimatedText
           text="Where Visual"
           as="h1"
-          class="font-display text-6xl leading-[0.85] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
+          class="font-display text-6xl leading-[0.9] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
           :ready="ready"
         />
       </div>
@@ -41,7 +41,7 @@
         <AnimatedText
           text="Comes Alive"
           as="h1"
-          class="font-display text-6xl leading-[0.85] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
+          class="font-display text-6xl leading-[0.9] tracking-wide text-foreground sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]"
           :ready="ready"
         />
       </div>

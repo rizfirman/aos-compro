@@ -58,7 +58,7 @@
             as="a"
             :href="domain.playlistUrl"
             target="_blank"
-            class="group inline-flex w-full items-center justify-center gap-3 border border-foreground/20 px-8 py-5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 hover:border-primary hover:text-primary sm:w-auto"
+            class="group inline-flex w-full cursor-pointer items-center justify-center gap-3 border border-foreground/20 px-8 py-5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 hover:border-primary hover:text-primary sm:w-auto"
           >
             {{ domain.title }} Playlist
           </MagneticButton>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page-curtain fixed inset-0 z-[60] bg-primary" />
+    <div class="page-curtain fixed inset-0 z-[60] bg-black" />
     <slot />
   </div>
 </template>

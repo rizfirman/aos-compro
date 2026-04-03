@@ -102,7 +102,8 @@
         <div
           v-for="(project, i) in domain.projects"
           :key="i"
-          class="group relative aspect-[4/3] overflow-hidden"
+          class="group relative aspect-[4/3] cursor-pointer overflow-hidden"
+          @click="openImage(project.image)"
         >
           <img
             :src="project.image"
@@ -125,6 +126,20 @@
       </div>
     </div>
   </div>
+
+  <transition name="fade">
+    <div
+      v-if="selectedImage"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
+      @click="closeImage"
+    >
+      <img
+        :src="selectedImage"
+        class="animate-zoom max-h-[90vh] max-w-[90vw] scale-95 object-contain opacity-0"
+        @click.stop
+      />
+    </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
@@ -143,6 +158,16 @@
 
   const isPlaying = ref(false)
   const video = ref<HTMLVideoElement | null>(null)
+
+  const selectedImage = ref<string | null>(null)
+
+  const openImage = (src: string) => {
+    selectedImage.value = src
+  }
+
+  const closeImage = () => {
+    selectedImage.value = null
+  }
 
   const playVideo = () => {
     isPlaying.value = true
@@ -198,3 +223,30 @@
     )
   })
 </script>
+
+<style lang="scss">
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.4s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-zoom {
+    animation: zoomIn 0.4s ease forwards;
+  }
+</style>
