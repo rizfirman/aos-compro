@@ -76,5 +76,6 @@
         delay: props.delay,
       })
     },
+    { immediate: true }
   )
 </script>

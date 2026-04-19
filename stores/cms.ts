@@ -125,6 +125,9 @@ export const useCmsStore = defineStore('cms', () => {
 
         isInitialized.value = true
       }
+      
+      // Pastikan status inisialisasi diset untuk branch fallback juga
+      isInitialized.value = true
     } catch (err) {
       console.error('Error fetching CMS data:', err)
       // Fallback fallback
