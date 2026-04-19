@@ -90,8 +90,11 @@
 
 
 
+  import { useWindowSize } from '@vueuse/core'
+
   defineProps<{ ready: boolean }>()
 
+  const { width } = useWindowSize()
   const cmsStore = useCmsStore()
   const { homeSettings } = storeToRefs(cmsStore)
 
@@ -102,8 +105,11 @@
   const content = ref(null)
   const indicator = ref(null)
 
+  const isMobile = computed(() => width.value > 0 && width.value < 768)
+
   const heroVideo = computed(() => {
-    return homeSettings.value?.heroVideo || ''
+    const rawUrl = homeSettings.value?.heroVideo || ''
+    return cmsStore.optimizeVideoAggressive(rawUrl, isMobile.value ? 640 : 1280)
   })
 
   onMounted(() => {

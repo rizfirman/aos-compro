@@ -70,12 +70,25 @@ export const useCmsStore = defineStore('cms', () => {
     return url.replace('/upload/', '/upload/f_auto,q_auto/')
   }
 
-  // HELPER: Optimasi Video Agresif untuk Homepage (High Compression)
-  const optimizeVideoAggressive = (url?: string | null) => {
+  // HELPER: Optimasi Video Agresif (Mendukung Responsif)
+  const optimizeVideoAggressive = (url?: string | null, width = 1280) => {
     if (!url || !url.includes('cloudinary.com')) return url || ''
     
-    // q_60: Kualitas menengah, w_1280: HD, br_1.5m: bitrate hemat
-    return url.replace('/upload/', '/upload/f_auto,q_60,w_1280,br_1.5m/')
+    const bitrate = width <= 640 ? '1m' : '1.5m'
+    const transformation = `f_auto,q_60,w_${width},br_${bitrate}`
+
+    // Bersihkan transformasi lama jika ada untuk mencegah duplikasi
+    if (url.includes('/upload/')) {
+      const parts = url.split('/upload/')
+      // Ambil bagian setelah /upload/, tapi buang folder transformasi jika ada (ada di antara dua slash pertama)
+      const afterUpload = parts[1].includes('/') && !parts[1].startsWith('v') 
+        ? parts[1].substring(parts[1].indexOf('/') + 1)
+        : parts[1]
+      
+      return `${parts[0]}/upload/${transformation}/${afterUpload}`
+    }
+    
+    return url
   }
 
   const fetchDomains = async () => {
