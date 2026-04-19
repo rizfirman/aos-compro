@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { collection, getDocs, query, orderBy, doc, getDoc, deleteDoc } from 'firebase/firestore'
-import type { Domain, SocialSettings } from '@/types/global-type'
+import type { Domain, SocialSettings, HomeSettings, Section } from '@/types/global-type'
 import { domains as initialDomains } from '@/constanta/dataList'
 
 export const useCmsStore = defineStore('cms', () => {
@@ -59,7 +59,7 @@ export const useCmsStore = defineStore('cms', () => {
   }
 
   // HELPER: Optimasi URL Cloudinary & Pembersihan Aset Lokal
-  const optimizeUrl = (url: string) => {
+  const optimizeUrl = (url?: string | null) => {
     if (!url) return ''
     
     const isLocal = typeof url === 'string' && (url.includes('/_nuxt/') || url.includes('@/assets/'))
