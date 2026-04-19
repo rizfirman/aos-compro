@@ -64,15 +64,24 @@
 
 <script setup lang="ts">
   import gsap from 'gsap'
-  import { domains } from '@/constanta/dataList'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
 
   defineProps<{ ready: boolean }>()
+
+  const cmsStore = useCmsStore()
+  const { domains } = storeToRefs(cmsStore)
 
   const el = ref<HTMLElement | null>(null)
   const visible = ref(false)
 
-  const allProjects = domains.flatMap((d) => d.projects.slice(0, 2))
-  const featured = allProjects.slice(0, 4)
+  // Ambil 2 project awal dari tiap domain, lalu batasi total 4 project
+  const allProjects = computed(() => domains.value.flatMap((d) => d.projects.slice(0, 2)))
+  const featured = computed(() => allProjects.value.slice(0, 4))
+
+  onMounted(async () => {
+    await cmsStore.fetchDomains()
+  })
 
   watch(visible, (val) => {
     if (!val || !el.value) return

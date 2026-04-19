@@ -33,11 +33,21 @@
 </template>
 
 <script setup lang="ts">
-  import { sections } from '@/constanta/dataList'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
+  import { sections as initialSections } from '@/constanta/dataList'
 
+  const cmsStore = useCmsStore()
+  const { aboutSections } = storeToRefs(cmsStore)
   const ready = ref(false)
 
-  onMounted(() => {
+  const sections = computed(() => {
+    return aboutSections.value.length > 0 ? aboutSections.value : initialSections
+  })
+
+  onMounted(async () => {
+    await cmsStore.fetchDomains()
+    
     // sync dengan page transition
     setTimeout(() => {
       ready.value = true

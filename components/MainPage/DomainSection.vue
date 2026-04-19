@@ -5,7 +5,17 @@
   >
     <!-- BG -->
     <div ref="img" class="absolute inset-0">
+      <video
+        v-if="domain.mainVideo"
+        :src="domain.mainVideo"
+        autoplay
+        loop
+        muted
+        playsinline
+        class="h-full w-full object-cover"
+      />
       <img
+        v-else
         :src="domain.image"
         :alt="domain.title"
         class="h-full w-full object-cover"
@@ -24,7 +34,7 @@
       <p
         class="content-item mb-4 text-[10px] uppercase tracking-[0.4em] text-primary"
       >
-        {{ String(index + 1).padStart(2, '0') }}
+        {{ String(index + 1).padStart(1, '0') }}
       </p>
 
       <AnimatedText
@@ -44,7 +54,7 @@
       <div class="content-item">
         <MagneticButton>
           <NuxtLink
-            to="/works"
+            :to="`/works#${domain.slug}`"
             class="group/btn inline-flex items-center gap-3 border px-8 py-4 text-[10px] uppercase tracking-[0.3em] transition-all duration-500"
           >
             View Works

@@ -5,14 +5,18 @@
     class="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
     :class="scrolled ? 'nav-blur border-b border-border' : ''"
   >
-    <div class="container flex h-20 items-center justify-between md:h-24">
+    <div class="container px-4 md:px-8 flex h-20 items-center justify-between md:h-24">
       <!-- LOGO -->
       <MagneticButton>
         <NuxtLink
           to="/"
-          class="font-display text-3xl tracking-[0.15em] md:text-4xl"
+          class="flex items-center -ml-5 md:ml-0"
         >
-          AOS
+          <img
+            :src="aosLogo"
+            alt="AOS Logo"
+            class="h-14 w-auto md:h-24 object-contain"
+          />
         </NuxtLink>
       </MagneticButton>
 
@@ -45,7 +49,7 @@
         <div class="flex flex-col gap-1.5">
           <span
             class="block h-[1.5px] w-6 bg-foreground transition-all duration-300"
-            :class="open ? 'translate-y-[6px] rotate-45' : ''"
+            :class="open ? 'translate-y-[7.5px] rotate-45' : ''"
           />
           <span
             class="block h-[1.5px] w-6 bg-foreground transition-all duration-300"
@@ -53,7 +57,7 @@
           />
           <span
             class="block h-[1.5px] w-6 bg-foreground transition-all duration-300"
-            :class="open ? '-translate-y-[6px] -rotate-45' : ''"
+            :class="open ? '-translate-y-[7.5px] -rotate-45' : ''"
           />
         </div>
       </button>
@@ -81,6 +85,7 @@
   import { useWindowScroll } from '@vueuse/core'
   import { useRoute } from 'vue-router'
   import gsap from 'gsap'
+  import aosLogo from '@/assets/aos_logo.png'
 
   const navItems = [
     { label: 'Home', path: '/' },

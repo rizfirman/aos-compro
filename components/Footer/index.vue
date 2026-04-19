@@ -59,14 +59,14 @@
 
           <div class="flex flex-col gap-3">
             <a
-              href="mailto:aosthetics@gmail.com"
+              :href="`mailto:${cms.socialSettings?.email || 'aosthetics@gmail.com'}`"
               class="text-sm text-foreground/70 transition-all duration-300 hover:tracking-wider hover:text-foreground"
             >
-              aosthetics@gmail.com
+              {{ cms.socialSettings?.email || 'aosthetics@gmail.com' }}
             </a>
 
             <a
-              href="https://instagram.com/aos.thetics"
+              :href="cms.socialSettings?.instagram || 'https://instagram.com/aos.thetics'"
               target="_blank"
               rel="noopener noreferrer"
               class="text-sm text-foreground/70 transition-all duration-300 hover:tracking-wider hover:text-foreground"
@@ -75,7 +75,7 @@
             </a>
 
             <a
-              href="https://youtube.com/@aosthetics"
+              :href="cms.socialSettings?.youtube || 'https://youtube.com/@aosthetics'"
               target="_blank"
               rel="noopener noreferrer"
               class="text-sm text-foreground/70 transition-all duration-300 hover:tracking-wider hover:text-foreground"
@@ -100,9 +100,15 @@
 <script setup lang="ts">
   import { useIntersectionObserver } from '@vueuse/core'
   import gsap from 'gsap'
+  import { useCmsStore } from '@/stores/cms'
 
+  const cms = useCmsStore()
   const el = ref<HTMLElement | null>(null)
   const isVisible = ref(false)
+
+  onMounted(() => {
+    cms.fetchDomains()
+  })
 
   // detect in-view
   useIntersectionObserver(

@@ -31,7 +31,7 @@
       :key="domain.slug"
       class="border-t border-border"
     >
-      <WorksDomainSection :domain="domain" :index="domain.id" />
+      <WorksPageWorksDomainSection :domain="domain" :index="domain.id" />
     </section>
 
     <!-- ================= PLAYLIST ================= -->
@@ -50,17 +50,17 @@
         </p>
 
         <div
-          class="flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-6"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto"
         >
           <MagneticButton
-            v-for="domain in domains"
-            :key="domain.slug"
+            v-for="(pl, i) in cmsStore.socialSettings?.playlists || []"
+            :key="i"
             as="a"
-            :href="domain.playlistUrl"
+            :href="pl.url"
             target="_blank"
-            class="group inline-flex w-full cursor-pointer items-center justify-center gap-3 border border-foreground/20 px-8 py-5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 hover:border-primary hover:text-primary sm:w-auto"
+            class="group inline-flex w-full cursor-pointer items-center justify-center gap-3 border border-foreground/20 px-8 py-5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 hover:border-primary hover:text-primary"
           >
-            {{ domain.title }} Playlist
+            {{ pl.title || 'Visual Archive' }}
           </MagneticButton>
         </div>
       </div>
@@ -71,18 +71,34 @@
 <script setup lang="ts">
   import gsap from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
 
-  import { domains } from '@/constanta/dataList'
-  import WorksDomainSection from '~/components/WorksPage/WorksDomainSection.vue'
+  const cmsStore = useCmsStore()
+  const { domains } = storeToRefs(cmsStore)
 
   gsap.registerPlugin(ScrollTrigger)
 
   /* ================= HERO ================= */
   const heroReady = ref(false)
+  const route = useRoute()
 
-  onMounted(() => {
+  onMounted(async () => {
+    // Fetch CMS data
+    await cmsStore.fetchDomains()
+
     setTimeout(() => {
       heroReady.value = true
     }, 700)
+
+    if (route.hash) {
+      setTimeout(() => {
+        const targetId = route.hash.slice(1)
+        const el = document.getElementById(targetId)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 1000)
+    }
   })
 </script>

@@ -5,7 +5,14 @@
   >
     <!-- BG -->
     <div ref="bg" class="absolute inset-0">
-      <img :src="heroBg" class="h-full w-full object-cover" />
+      <video
+        :src="heroVideo"
+        autoplay
+        loop
+        muted
+        playsinline
+        class="h-full w-full object-cover"
+      />
       <div class="absolute inset-0 bg-background/60" />
     </div>
 
@@ -77,10 +84,15 @@
 <script setup lang="ts">
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
 
-  import heroBg from '@/assets/hero-bg.jpg'
+
 
   defineProps<{ ready: boolean }>()
+
+  const cmsStore = useCmsStore()
+  const { homeSettings } = storeToRefs(cmsStore)
 
   gsap.registerPlugin(ScrollTrigger)
 
@@ -88,6 +100,10 @@
   const bg = ref(null)
   const content = ref(null)
   const indicator = ref(null)
+
+  const heroVideo = computed(() => {
+    return homeSettings.value?.heroVideo || ''
+  })
 
   onMounted(() => {
     // PARALLAX BG

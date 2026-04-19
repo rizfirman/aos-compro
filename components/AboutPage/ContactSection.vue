@@ -101,8 +101,8 @@
         <div class="space-y-10 lg:col-span-4 lg:col-start-9">
           <div>
             <p class="label">Email</p>
-            <a href="mailto:aosthetics@gmail.com" class="link">
-              aosthetics@gmail.com
+            <a :href="`mailto:${cmsStore.socialSettings?.email || 'aosthetics@gmail.com'}`" class="link">
+              {{ cmsStore.socialSettings?.email || 'aosthetics@gmail.com' }}
             </a>
           </div>
 
@@ -114,8 +114,8 @@
           <div>
             <p class="label">Follow</p>
             <div class="flex flex-col gap-2">
-              <a href="#">Instagram</a>
-              <a href="#">YouTube</a>
+              <a :href="cmsStore.socialSettings?.instagram || '#'" target="_blank">Instagram</a>
+              <a :href="cmsStore.socialSettings?.youtube || '#'" target="_blank">YouTube</a>
               <a href="#">Behance</a>
             </div>
           </div>
@@ -127,8 +127,12 @@
 
 <script setup lang="ts">
   import emailjs from '@emailjs/browser'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
 
   defineProps<{ ready: boolean }>()
+
+  const cmsStore = useCmsStore()
 
   const config = useRuntimeConfig()
 

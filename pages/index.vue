@@ -16,7 +16,14 @@
 </template>
 
 <script setup lang="ts">
-  import { domains } from '@/constanta/dataList'
+  import { useCmsStore } from '@/stores/cms'
+  import { storeToRefs } from 'pinia'
 
+  const cmsStore = useCmsStore()
+  const { domains } = storeToRefs(cmsStore)
   const pageReady = ref(false)
+
+  onMounted(async () => {
+    await cmsStore.fetchDomains()
+  })
 </script>

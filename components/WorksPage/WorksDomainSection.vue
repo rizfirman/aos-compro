@@ -1,11 +1,11 @@
 <template>
-  <div ref="el">
+  <div :id="domain.slug" ref="el">
     <!-- TITLE -->
     <div class="container pb-10 pt-20 md:pb-14 md:pt-28">
       <p
         class="fade-item mb-3 text-[10px] uppercase tracking-[0.4em] text-primary"
       >
-        {{ String(index + 1).padStart(2, '0') }}
+        {{ String(index ).padStart(1, '0') }}
       </p>
 
       <AnimatedText
@@ -22,6 +22,7 @@
         <!-- VIDEO / IMAGE -->
         <div ref="img" class="absolute inset-0">
           <!-- IMAGE (default) -->
+           
           <img
             v-if="!isPlaying"
             :src="domain.image"
@@ -33,7 +34,7 @@
             v-else
             ref="video"
             class="h-full w-full object-cover"
-            :src="domain.video"
+            :src="domain.mainVideo"
             autoplay
             controls
           />
@@ -47,7 +48,7 @@
 
         <!-- PLAY BUTTON -->
         <button
-          v-if="!isPlaying && domain.video"
+          v-if="!isPlaying && domain.mainVideo"
           class="absolute inset-0 flex items-center justify-center"
           @click="playVideo"
         >

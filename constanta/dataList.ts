@@ -1,24 +1,17 @@
-import domainScreen from '@/assets/domain-screen.jpg'
-import domainStage from '@/assets/domain-stage.jpg'
-import domainSpace from '@/assets/domain-space.jpg'
 
-import projectScreen01 from '@/assets/project-screen-01.jpg'
-import projectScreen02 from '@/assets/project-screen-02.jpg'
-import projectScreen03 from '@/assets/project-screen-03.jpg'
-import projectBrandFilm from '@/assets/project-brand-film.jpg'
-import projectMotion from '@/assets/project-motion.jpg'
 
-import projectStage01 from '@/assets/project-stage-01.jpg'
-import projectStage02 from '@/assets/project-stage-02.jpg'
-import projectStage03 from '@/assets/project-stage-03.jpg'
-import projectStage from '@/assets/project-stage.jpg'
-import projectCorporateStage from '@/assets/project-corporate-stage.jpg'
+ 
+ 
+ 
+ 
 
-import projectSpace01 from '@/assets/project-space-01.jpg'
-import projectSpace02 from '@/assets/project-space-02.jpg'
-import projectSpace03 from '@/assets/project-space-03.jpg'
-import projectMapping from '@/assets/project-mapping.jpg'
-import projectImmersive from '@/assets/project-immersive.jpg'
+
+
+
+
+
+
+
 
 import type { Domain, Section } from '@/types/global-type'
 
@@ -49,8 +42,9 @@ export const domains: Domain[] = [
     slug: 'screen',
     title: 'Visual for Screen',
     label: 'Screen',
-    image: domainScreen,
-    video: '/videos/showreel_aos.mp4',
+    image: '',
+    mainVideo: '',
+    video: '',
     description:
       'Cinematic content, brand films, motion graphics, and digital campaigns built to captivate on every screen.',
     longDescription:
@@ -64,42 +58,43 @@ export const domains: Domain[] = [
       '2D & 3D Animation',
     ],
     projects: [
-      { title: 'Kinetic Flow', client: 'Maison Lumière', image: projectMotion },
+      { title: '', client: '', image: '' },
       {
-        title: 'Noir Essence',
-        client: 'Atelier Noir',
-        image: projectBrandFilm,
+        title: '',
+        client: '',
+        image: '',
       },
-      { title: 'Neon Pulse', client: 'Vertex Labs', image: projectScreen01 },
+      { title: '', client: '', image: '' },
       {
-        title: 'Studio Light',
-        client: 'Nova Creative',
-        image: projectScreen02,
+        title: '',
+        client: '',
+        image: '',
       },
-      { title: 'Liquid Form', client: 'Alchemy Co.', image: projectScreen03 },
-      { title: 'Chromatic', client: 'Prisma Agency', image: projectMotion },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
       {
-        title: 'Signal Wave',
-        client: 'Broadcast Inc.',
-        image: projectScreen01,
+        title: '',
+        client: '',
+        image: '',
       },
       {
-        title: 'Frame Perfect',
-        client: 'Cinéma House',
-        image: projectBrandFilm,
+        title: '',
+        client: '',
+        image: '',
       },
-      { title: 'Digital Canvas', client: 'Art+Code', image: projectScreen03 },
-      { title: 'Motion Shift', client: 'Drift Studio', image: projectScreen02 },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
     ],
-    playlistUrl: 'https://youtube.com/playlist?list=YOUR_SCREEN_PLAYLIST',
+
   },
   {
     id: 2,
     slug: 'stage',
     title: 'Visual for Stage',
     label: 'Stage',
-    image: domainStage,
-    video: '/video.mp4',
+    image: '',
+    mainVideo: '',
+    video: '',
     description:
       'Real-time visual systems for live performances, concerts, award shows, and large-scale events.',
     longDescription:
@@ -112,37 +107,24 @@ export const domains: Domain[] = [
       'Event Visual Direction',
     ],
     projects: [
-      { title: 'Ethereal Waves', client: 'Meridian Live', image: projectStage },
-      { title: 'Arena Pulse', client: 'Live Nation ME', image: projectStage01 },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
       {
-        title: 'Corporate Edge',
-        client: 'GlobalTech Summit',
-        image: projectStage02,
+        title: '',
+        client: '',
+        image: '',
       },
-      { title: 'Festival Blaze', client: 'Soundstorm', image: projectStage03 },
-      {
-        title: 'Convergence',
-        client: 'Dubai Expo',
-        image: projectCorporateStage,
-      },
-      { title: 'Night Voltage', client: 'MDL Beast', image: projectStage01 },
-      { title: 'Lumina Live', client: 'Heritage Arts', image: projectStage },
-      { title: 'Stage Shift', client: 'Eventium', image: projectStage02 },
-      { title: 'Sonic Wave', client: 'Ultra ME', image: projectStage03 },
-      {
-        title: 'Grand Visual',
-        client: 'DIFC Events',
-        image: projectCorporateStage,
-      },
+      { title: '', client: '', image: '' },
     ],
-    playlistUrl: 'https://youtube.com/playlist?list=YOUR_STAGE_PLAYLIST',
+ 
   },
   {
     id: 3,
     slug: 'space',
     title: 'Visual for Space',
     label: 'Space',
-    image: domainSpace,
+    image: '',
+    mainVideo: '',
     description:
       'Immersive installations, projection mapping, and spatial visual experiences for physical environments.',
     longDescription:
@@ -155,24 +137,24 @@ export const domains: Domain[] = [
     ],
     projects: [
       {
-        title: 'Echoes of Light',
-        client: 'Heritage Council',
-        image: projectMapping,
+        title: '',
+        client: '',
+        image: '',
       },
       {
-        title: 'Deep Dive',
-        client: 'National Gallery',
-        image: projectImmersive,
+        title: '',
+        client: '',
+        image: '',
       },
-      { title: 'Facade Prism', client: 'Municipality', image: projectSpace01 },
-      { title: 'Fluid Realm', client: 'Art Dubai', image: projectSpace02 },
-      { title: 'Light Path', client: 'Museum District', image: projectSpace03 },
-      { title: 'Projected', client: 'Royal Opera', image: projectSpace01 },
-      { title: 'Immersion', client: 'Expo 2025', image: projectMapping },
-      { title: 'Spatial Echo', client: 'Alserkal Ave', image: projectSpace02 },
-      { title: 'Canvas City', client: 'Sharjah Art', image: projectImmersive },
-      { title: 'Lightform', client: 'Louvre AD', image: projectSpace03 },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
+      { title: '', client: '', image: '' },
+   
+  
     ],
-    playlistUrl: 'https://youtube.com/playlist?list=YOUR_SPACE_PLAYLIST',
+
   },
 ]
