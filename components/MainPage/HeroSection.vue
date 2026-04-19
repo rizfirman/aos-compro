@@ -11,6 +11,7 @@
         loop
         muted
         playsinline
+        preload="auto"
         class="h-full w-full object-cover"
       />
       <div class="absolute inset-0 bg-background/60" />

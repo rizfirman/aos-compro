@@ -37,7 +37,7 @@ export const useCmsStore = defineStore('cms', () => {
         const data = docSnap.data() as HomeSettings
         homeSettings.value = {
           ...data,
-          heroVideo: optimizeUrl(data.heroVideo)
+          heroVideo: optimizeVideoAggressive(data.heroVideo)
         }
       }
     } catch (err) {
@@ -68,6 +68,14 @@ export const useCmsStore = defineStore('cms', () => {
     if (!url.includes('cloudinary.com')) return url
     if (url.includes('/f_auto,q_auto/')) return url
     return url.replace('/upload/', '/upload/f_auto,q_auto/')
+  }
+
+  // HELPER: Optimasi Video Agresif untuk Homepage (High Compression)
+  const optimizeVideoAggressive = (url?: string | null) => {
+    if (!url || !url.includes('cloudinary.com')) return url || ''
+    
+    // q_60: Kualitas menengah, w_1280: HD, br_1.5m: bitrate hemat
+    return url.replace('/upload/', '/upload/f_auto,q_60,w_1280,br_1.5m/')
   }
 
   const fetchDomains = async () => {
@@ -123,6 +131,7 @@ export const useCmsStore = defineStore('cms', () => {
     fetchSocialSettings,
     fetchHomeSettings,
     fetchAboutSections,
+    optimizeVideoAggressive,
     isInitialized
   }
 })
