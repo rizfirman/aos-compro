@@ -97,13 +97,16 @@ export const useCmsStore = defineStore('cms', () => {
 
     loading.value = true
     try {
-      await fetchSocialSettings()
-      await fetchHomeSettings()
-      await fetchAboutSections()
-      
       const { $firebase } = useNuxtApp() as any
       const q = query(collection($firebase.db, 'domains'), orderBy('id', 'asc'))
-      const querySnapshot = await getDocs(q)
+      
+      // Ambil semua data pengaturan dan domain secara PARALEL agar jauh lebih cepat
+      const [_, __, ___, querySnapshot] = await Promise.all([
+        fetchSocialSettings(),
+        fetchHomeSettings(),
+        fetchAboutSections(),
+        getDocs(q)
+      ])
       
       if (querySnapshot.empty) {
         // Fallback ke data statis jika Firestore kosong
