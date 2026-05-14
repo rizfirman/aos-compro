@@ -7,9 +7,10 @@
     <div ref="bg" class="absolute inset-0">
       <video
         :src="heroVideo"
+        :poster="heroPoster"
         autoplay
         loop
-        muted
+        :muted="true"
         playsinline
         preload="auto"
         class="h-full w-full object-cover"
@@ -110,6 +111,12 @@
   const heroVideo = computed(() => {
     const rawUrl = homeSettings.value?.heroVideo || ''
     return cmsStore.optimizeVideoAggressive(rawUrl, isMobile.value ? 640 : 1280)
+  })
+
+  // Auto-generate JPG poster from Cloudinary URL for instant loading
+  const heroPoster = computed(() => {
+    if (!heroVideo.value) return ''
+    return heroVideo.value.replace(/\.(mp4|webm|mov)$/i, '.jpg')
   })
 
   onMounted(() => {

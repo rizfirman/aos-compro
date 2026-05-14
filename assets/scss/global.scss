@@ -173,3 +173,11 @@ textarea:-webkit-autofill {
   -webkit-text-fill-color: hsl(var(--foreground));
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* HIDE SAFARI MOBILE VIDEO PLAY BUTTON */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
