@@ -66,29 +66,36 @@ export const useCmsStore = defineStore('cms', () => {
     if (isLocal) return ''
 
     if (!url.includes('cloudinary.com')) return url
-    if (url.includes('/f_auto,q_auto/')) return url
-    return url.replace('/upload/', '/upload/f_auto,q_auto/')
+    
+    // Paksa mp4 untuk mengatasi error 416 di Safari (WebM issue)
+    let finalUrl = url.replace(/\.(webm|mov|ogg)$/i, '.mp4')
+    
+    if (finalUrl.includes('/f_auto,q_auto/')) return finalUrl
+    return finalUrl.replace('/upload/', '/upload/f_auto,q_auto/')
   }
 
   // HELPER: Optimasi Video Agresif (Mendukung Responsif)
   const optimizeVideoAggressive = (url?: string | null, width = 1280) => {
     if (!url || !url.includes('cloudinary.com')) return url || ''
     
+    // Jangan gunakan f_auto untuk video agar Safari tidak dipaksa pakai WebM.
+    // Kita panggil codec mp4 yang dijamin kompatibel.
     const bitrate = width <= 640 ? '1m' : '1.5m'
-    const transformation = `f_auto,q_60,w_${width},br_${bitrate}`
+    const transformation = `q_60,w_${width},br_${bitrate}`
 
     // Bersihkan transformasi lama jika ada untuk mencegah duplikasi
     if (url.includes('/upload/')) {
       const parts = url.split('/upload/')
-      // Ambil bagian setelah /upload/, tapi buang folder transformasi jika ada (ada di antara dua slash pertama)
       const afterUpload = parts[1].includes('/') && !parts[1].startsWith('v') 
         ? parts[1].substring(parts[1].indexOf('/') + 1)
         : parts[1]
       
-      return `${parts[0]}/upload/${transformation}/${afterUpload}`
+      const forceMp4 = afterUpload.replace(/\.(webm|mov|ogg)$/i, '.mp4')
+      
+      return `${parts[0]}/upload/${transformation}/${forceMp4}`
     }
     
-    return url
+    return url.replace(/\.(webm|mov|ogg)$/i, '.mp4')
   }
 
   const fetchDomains = async () => {
