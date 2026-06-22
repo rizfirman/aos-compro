@@ -41,12 +41,16 @@
     middleware: ['auth']
   })
 
+  const route = useRoute()
   const { $firebase } = useNuxtApp() as any
   const loading = ref(false)
   const error = ref('')
 
   onMounted(() => {
-    if ($firebase.auth.currentUser) {
+    if (route.query.error === 'unauthorized') {
+      error.value = 'Gagal login. Pastikan Anda menggunakan email yang diizinkan.'
+    }
+    if ($firebase.auth.currentUser && route.query.error !== 'unauthorized') {
        navigateTo('/admin')
     }
   })

@@ -129,8 +129,24 @@ const fetchData = async () => {
 
     // Fetch Other Settings
     await cmsStore.fetchDomains()
-    if (cmsStore.socialSettings) socialData.value = { ...cmsStore.socialSettings }
-    if (cmsStore.homeSettings) homeData.value = { ...cmsStore.homeSettings }
+    
+    // Gunakan data dari store, jika kosong buatkan struktur template default agar form tetap muncul
+    socialData.value = cmsStore.socialSettings 
+      ? { ...cmsStore.socialSettings }
+      : { email: '', instagram: '', youtube: '', playlists: [] }
+
+    homeData.value = cmsStore.homeSettings 
+      ? { ...cmsStore.homeSettings }
+      : {
+          heroTitle1: '',
+          heroTitle2: '',
+          heroSubtitle: '',
+          heroVideo: '',
+          positioningTitle1: '',
+          positioningTitle2: '',
+          positioningDesc: ''
+        }
+
     if (cmsStore.aboutSections.length > 0) aboutData.value = [...cmsStore.aboutSections]
     else aboutData.value = JSON.parse(JSON.stringify(initialSections))
   } catch (err) {
@@ -238,7 +254,7 @@ const migrateData = async () => {
 const logout = async () => {
   try {
     await signOut($firebase.auth)
-    navigateTo('/login')
+    navigateTo('/admin/login')
   } catch (err: any) {
     ui.notify(err.message, 'error')
   }

@@ -1,3 +1,5 @@
+import { doc, getDoc } from 'firebase/firestore'
+
 export default defineNuxtRouteMiddleware(async (to) => {
   const { $firebase } = useNuxtApp() as any
   const auth = $firebase?.auth
@@ -18,14 +20,28 @@ export default defineNuxtRouteMiddleware(async (to) => {
   if (to.path.startsWith('/admin') && to.path !== '/admin/login') {
     const user = (await getCurrentUser()) as any
     
-    // Whitelist check
-    const allowedEmails = ['rizfirman@gmail.com', 'aosthetics.aosthetics@gmail.com']
-    const isAllowedDomain = user?.email?.endsWith('@aosthetics.com')
-    const isAllowedEmail = allowedEmails.includes(user?.email || '')
-
-    if (!user || (!isAllowedEmail && !isAllowedDomain)) {
-      if (user) await auth.signOut() 
+    if (!user) {
       return navigateTo('/admin/login')
+    }
+
+    const userEmail = user?.email || ''
+    const isAllowedDomain = userEmail.endsWith('@aosthetics.com')
+    
+    let isAllowedUser = false
+    try {
+      if (userEmail) {
+        const db = $firebase.db
+        const userDocRef = doc(db, 'users', userEmail)
+        const userDocSnap = await getDoc(userDocRef)
+        isAllowedUser = userDocSnap.exists() && userDocSnap.data()?.active === true
+      }
+    } catch (err) {
+      console.error('Error verifying admin status in Firestore:', err)
+    }
+
+    if (!isAllowedUser && !isAllowedDomain) {
+      await auth.signOut() 
+      return navigateTo('/admin/login?error=unauthorized')
     }
   }
 
