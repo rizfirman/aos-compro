@@ -15,7 +15,7 @@
           <img
             :src="aosLogo"
             alt="AOS Logo"
-            class="h-14 w-auto md:h-24 object-contain"
+            class="h-24 w-auto md:h-40 object-contain"
           />
         </NuxtLink>
       </MagneticButton>
@@ -85,7 +85,7 @@
   import { useWindowScroll } from '@vueuse/core'
   import { useRoute } from 'vue-router'
   import gsap from 'gsap'
-  import aosLogo from '@/assets/aos_logo.png'
+  import aosLogo from '@/assets/aos-logo-new.png'
 
   const navItems = [
     { label: 'Home', path: '/' },
